@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Open path for this specific app's data as requested for testing and simple access
+    match /artifacts/{appId}/public/data/{document=**} {
+      allow read, write: if true;
+    }
+    
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "entities": {
+    "LeaveRequest": {
+      "title": "Leave Request",
+      "description": "A student's request for academic leave",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "Student ID" },
+        "studentName": { "type": "string", "description": "Student's Full Name" },
+        "studentEmail": { "type": "string", "description": "Student's BU Email" },
+        "faculty": { "type": "string", "description": "Faculty/Program" },
+        "semester": { "type": "string", "description": "Target semester for leave" },
+        "reason": { "type": "string", "description": "Reason for leave" },
+        "paymentStatus": { "type": "string", "description": "Payment status (paid/unpaid/etc)" },
+        "gpa": { "type": "string", "description": "Cumulative GPA" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "studentName", "studentEmail", "faculty", "semester", "reason", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "artifacts/c843a196-e84d-456e-b9dd-b8505f8c38fd/public/data/leave_requests/{requestId}": {
+      "schema": "LeaveRequest",
+      "description": "Collection of leave requests for the app"
+    }
+  }
+}
